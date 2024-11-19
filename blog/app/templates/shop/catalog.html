@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+   <h2 align="center">Категории</h2>
+<div class="category">
+   {% for cat in category %}
+   <div>
+      <a href="/catalog/{{cat.id}}">
+         <img src="/media/{{cat.image}}"><br >
+         {{cat.name}}
+      </a>
+   </div>
+   {% endfor %}
+</div>
+{% endblock %}

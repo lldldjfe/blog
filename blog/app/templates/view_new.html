@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="content">
+    <h2>{{new.title}}</h2>
+    <p>
+        <img src="/media/{{new.image}}" alt="">
+    </p>
+    <p>
+        {{new.full_text|safe}}
+    </p>
+    <p>
+        <a href="/" class="btn">Вернуться назад</a>
+    </p>
+    <p>
+        Количество лайков: <a href="/add_like/{{new.id}}">{{like_count}}</a>
+        Просмотров: {{new.view}}
+
+    </p>
+    <div class="comment_blog">
+        {% for comment in comments %}
+        <div class="comment_blog_item">
+            <div>{{comment.user.login}}: </div>
+            <div>{{comment.comment}}
+                <span>{{comment.datetime|date:"d.m.Y H:i"}}</span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+    <form method="post">
+        {% csrf_token %}
+        <p>
+            <label>Ваш логин:</label>
+            <input type="text" name="login" value="{{request.session.user}}" readonly>
+        </p>
+        <p>
+             <label>Ваш комментарий:</label>
+            <textarea rows="5" cols="15" name="comment"></textarea>
+        </p>
+        <p>
+            <button type="submit" class="btn">Добавить</button>
+        </p>
+
+    </form>
+</div>
+{% endblock %}

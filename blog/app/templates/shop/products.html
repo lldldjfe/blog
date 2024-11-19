@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<br /><br />
+   <div class="category">
+   {% for cat in categorys %}
+   <div>
+       <img src="/media/{{cat.image}}" style="width: 50px" alt=""><br />
+      <a href="/catalog/{{cat.id}}">
+         {{cat.name}}
+      </a>
+   </div>
+   {% endfor %}
+</div>
+<div class="products">
+   {% for product in products %}
+   <div>
+       <p>{{product.name}}</p>
+       <p><img src="/media/{{product.image}}" alt=""></p>
+       <p>{{product.description}}</p>
+       <p>{{product.category.name}}</p>
+       <p><b>{{product.price}} руб.</b></p>
+       <a href="/add_cart/{{product.id}}" class="btn_add_cart">Добавить в корзину</a>
+      </a>
+   </div>
+   {% endfor %}
+</div>
+{% endblock %}

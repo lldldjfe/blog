@@ -1,0 +1,38 @@
+yandex.ru
+google.com
+Microsoft.com
+
+1. Дизайн (дизайнеры, figma, фотошоп)
+2. Верстка (html, css. js - frontend)
+3. Программирование на Python (Django, База данных (Sqlite3, MySQL, Postgresql))
+4. Тестирование
+5. Размещаем сайт на хостинге или сервере (11.55.22.11)
+6. Продвижение сайта
+
+Команды
+pip install django - установка джанго
+django-admin startproject blog
+cd blog - перемещаемся в папку
+python manage.py startapp app - создание приложения
+python manage.py makemigrations - создание миграции
+python manage.py - сама миграция
+python manage.py createsuperuser - создание админа
+python manage.py runserver- запуск сервера
+
+
+Алгоритм создания страницы
+1. Создание маршрута (urls.py)
+2. Создание функций, которые обрабатывают сартшрут
+
+
+Структура страницы
+- шапка (header)
+- контент
+- футер (footer)
+
+
+Модель нужны для хранения данных
+Модели создаются в файле model.py
+После добавления моделей необходимо выполнять миграцию:
+python manage.py makemigrations - создание миграцииd
+python manage.py migrate  - сама миграция

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if cart_bool %}
+    <h2 align="center">Корзина пуста</h2>
+{% else %}
+<h2 align="center">Корзина</h2>
+<table border="1" align="center">
+    <tr>
+        <th>Название</th>
+        <th>Картинка</th>
+        <th>Цена</th>
+        <th>Количество</th>
+        <th>Сумма</th>
+        <th></th>
+    </tr>
+    {% for cart in products_cart %}
+        <tr>
+            <td>{{cart.name}}</td>
+             <td><img src="/media/{{cart.img}}" width="100px"></td>
+             <td>{{cart.price}} руб.</td>
+            <td>{{cart.count}}</td>
+            <td>{{cart.summa}} руб.</td>
+            <td>
+                <form action="/delete_product" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="id_product" value="{{cart.id}}">
+                    <input type="submit" value="Удалить">
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+<p align="center">Общая сумма заказа {{total_price}} руб.</p>
+<form action="/add_order" method="POST" align="center">
+    {% csrf_token %}
+    <input type="hidden" name="summa" value="{{total_price}}">
+    <p>
+        <input type="text" name="addr" placeholder="Ваш адрес">
+    </p>
+    <button type="submit">Оформить заказ</button>
+</form>
+{% endif %}
+{% endblock %}

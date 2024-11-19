@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if suc != '' %}
+<p align="center" style="color: green">{{suc}}</p>
+{% endif %}
+    <h2 align="center">Регистрация</h2>
+<form action="" method="post" align="center">
+     {% csrf_token %}
+    <p>
+        <label>Login:</label>
+        <input type="text" name="login">
+    </p>
+    <p>
+        <label>Email:</label>
+        <input type="email" name="email">
+    </p>
+    <p>
+        <label>Password:</label>
+        <input type="password" name="password">
+    </p>
+    <p>
+        <input type="submit" value="Зарегистрироваться">
+    </p>
+</form>
+{% endblock %}

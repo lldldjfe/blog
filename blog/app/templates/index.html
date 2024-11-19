@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="blogs">
+    {% for i in news %}
+    <div>
+        <h3>{{i.title}}</h3>
+        <img src="/media/{{i.image}}" width="200px">
+        <p style="width: 250px">
+            {{i.description}}
+        </p>
+        <p>
+            <a href="#">{{i.user.login}}</a>
+        </p>
+        <p>
+             <a href="/view/{{i.id}}" class="btn">Читать подробнее</a>
+        </p>
+
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
