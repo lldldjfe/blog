@@ -4,6 +4,7 @@ from django.core.files.storage import FileSystemStorage
 
 def index(requst):
     news = Blog.objects.all()
+    print(news)
     return render(requst, 'index.html',{'news': news})
 
 
